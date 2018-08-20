@@ -20,9 +20,7 @@ public class UserController {
 
     @PostMapping(value = "add_user_data")
     public String addUserData(UserEntity userEntity){
-        for (int i = 1; i < 100; i++) {
-            userService.addUserData(userEntity);
-        }
+        userService.addUserData(userEntity);
         return "添加成功！";
     }
 
