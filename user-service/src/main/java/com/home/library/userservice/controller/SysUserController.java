@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -35,6 +36,19 @@ public class SysUserController {
     @RequestMapping(value = "getUploadAll")
     public List<FileEntity> UploadAll(){
         return uploadServiceFeign.findAllUpload();
+    }
+
+    @PostMapping(value = "setSession")
+    public String insertSession(HttpServletRequest request) {
+        request.getSession().setAttribute("userSession",1);
+        return "添加Session成功！";
+    }
+
+    @GetMapping(value = "getSession")
+    public String selectSession(HttpServletRequest request) {
+        int session = (int)request.getSession().getAttribute("userSession");
+
+        return "获取Session成功！"+ session;
     }
 
 }
