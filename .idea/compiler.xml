@@ -8,10 +8,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="admin" />
         <module name="eureka" />
+        <module name="gateway" />
+        <module name="oauth2" />
         <module name="resources-service" />
         <module name="upload-service" />
         <module name="user-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authentication" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
