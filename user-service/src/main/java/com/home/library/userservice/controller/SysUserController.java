@@ -2,15 +2,16 @@ package com.home.library.userservice.controller;
 
 import com.home.library.userservice.call.upload.service.UploadServiceFeign;
 import com.home.library.userservice.entity.FileEntity;
-import com.home.library.userservice.entity.SysUserEntity;
+import com.home.library.userservice.entity.SysUser;
 import com.home.library.userservice.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -23,8 +24,14 @@ public class SysUserController {
     @Autowired
     UploadServiceFeign uploadServiceFeign;
 
+    @PostMapping(value = "/regin")
+    public String regin(SysUser sysUser) {
+        sysUserService.regin(sysUser);
+        return "注册成功！";
+    }
+
     @GetMapping(value = "getUserAll")
-    public List<SysUserEntity> UserAll(){
+    public List<SysUser> UserAll(){
         return sysUserService.findAll();
     }
 

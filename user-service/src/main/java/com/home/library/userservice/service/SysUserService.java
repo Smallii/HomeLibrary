@@ -1,6 +1,6 @@
 package com.home.library.userservice.service;
 
-import com.home.library.userservice.entity.SysUserEntity;
+import com.home.library.userservice.entity.SysUser;
 
 import java.util.List;
 
@@ -10,11 +10,13 @@ public interface SysUserService {
      * @param username
      * @return
      */
-    SysUserEntity findByUsername(String username);
+    SysUser findByUsername(String username);
 
     /**
      * 查询全部
      * @return
      */
-    List<SysUserEntity> findAll();
+    List<SysUser> findAll();
+
+    void regin (SysUser sysUser);
 }
